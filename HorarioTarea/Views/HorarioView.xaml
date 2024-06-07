@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="HorarioTarea.Views.HorarioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Models="clr-namespace:HorarioTarea.Models"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HorarioTarea.Views" xmlns:viewmodels="clr-namespace:HorarioTarea.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HorarioViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+        <Image Source="https://www.shutterstock.com/image-photo/flat-lay-colorful-school-stationery-600nw-2331034845.jpg" Stretch="Fill"></Image>
+        <Border CornerRadius="30" Background="White" Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height=".9*" />
+                    <RowDefinition Height="Auto" />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Padding="7" Grid.Row="0" FontSize="20" Margin="50,0,0,0" Foreground="Black" FontWeight="Bold"  Text="Horario Semanal"></TextBlock>
+                <TextBlock Margin="10"  HorizontalAlignment="Center" FontWeight="Thin" FontStyle="Italic" FontSize="14" Grid.Row="1" Text="Dia Seleccionado:  "><Run Text="{Binding Dia}"></Run></TextBlock>
+                <UniformGrid Grid.Row="2" Columns="7">
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Content="Lun" Command="{Binding ObtenerDiaCommand}" CommandParameter="Lunes" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Martes" Content="Mar" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Miercoles" Content="Mie" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Jueves" Content="Jue" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Viernes" Content="Vie" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Sabado" Content="Sab" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{Binding ObtenerDiaCommand}" CommandParameter="Domingo" Content="Dom" FontWeight="Bold"  Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+
+                </UniformGrid>
+
+                <ListBox Grid.Row="3" HorizontalContentAlignment="Stretch" ItemsSource="{Binding ListaDia}" SelectedItem="{Binding Seleccionado}">
+
+
+                   
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl Content="{Binding}">
+                                <ContentControl.Resources>
+                                    <DataTemplate DataType="{x:Type Models:Clase}">
+                                        <local:ClaseView />
+                                    </DataTemplate>
+                                    <DataTemplate DataType="{x:Type Models:Actividad}">
+                                        <local:ActividadView />
+                                    </DataTemplate>
+                                </ContentControl.Resources>
+                            </ContentControl>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="15" HorizontalAlignment="Right">
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Content="Eliminar" FontWeight="Bold" Command="{Binding CambiarVistaCommand}" CommandParameter="VerEliminar" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Content="Editar" FontWeight="Bold" Command="{Binding CambiarVistaCommand}" CommandParameter="VerEditar" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+
+                    <Border Width="50" Height="50" CornerRadius="100" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Content="+" FontWeight="Bold" Command="{Binding CambiarVistaCommand}" CommandParameter="VerSeleccion" Background="Transparent" Foreground="White" BorderBrush="Transparent"/>
+                    </Border>
+                    
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

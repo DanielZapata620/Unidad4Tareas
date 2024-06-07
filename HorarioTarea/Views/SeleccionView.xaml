@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="HorarioTarea.Views.SeleccionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HorarioTarea.Views" xmlns:viewmodels="clr-namespace:HorarioTarea.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HorarioViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+        <Image Source="https://www.shutterstock.com/image-photo/flat-lay-colorful-school-stationery-600nw-2331034845.jpg" Stretch="Fill"></Image>
+        <Border CornerRadius="30" Background="White" Margin="80">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height=".4*"></RowDefinition>
+                    <RowDefinition Height=".2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Padding="20" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Text="Seleccione que desea agregar"></TextBlock>
+                <UniformGrid Grid.Row="1" Columns="2">
+                    <Image Source="https://cdn-icons-png.flaticon.com/512/4710/4710724.png"></Image>
+                    <Image Source="https://cdn-icons-png.flaticon.com/512/15178/15178495.png"></Image>
+                </UniformGrid>
+                <UniformGrid Grid.Row="2" Columns="2">
+                    <Border Width="150" Height="50" CornerRadius="10" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Button Content="CLASE"  Foreground="White" FontWeight="Bold" Command="{Binding CambiarVistaCommand}" CommandParameter="AgregarClase" Background="Transparent"   BorderBrush="Transparent"/>
+                    </Border>
+                    <Border Width="150" Height="50" CornerRadius="10" Margin="10" Background="Navy" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Button Content="ACTIVIDAD"  Foreground="White" FontWeight="Bold" Command="{Binding CambiarVistaCommand}" CommandParameter="AgregarActividad" Background="Transparent"   BorderBrush="Transparent"/>
+                    </Border>
+
+                </UniformGrid>
+            </Grid>
+
+
+        </Border>
+    </Grid>
+</UserControl>
